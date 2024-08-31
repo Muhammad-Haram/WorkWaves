@@ -1,11 +1,17 @@
 import express from "express";
-import { login, register, updateProfile } from "../controllers/user.controller";
-import isAuth from "../middlewares/isAuth";
+import {
+  login,
+  logout,
+  register,
+  updateProfile,
+} from "../controllers/user.controller.js";
+import isAuth from "../middlewares/isAuth.js";
 
 const router = express.Router();
 
 router.route("/register").post(register);
 router.route("/login").post(login);
+router.route("/logout").get(logout);
 router.route("/profile/update").post(isAuth, updateProfile);
 
 export default router;

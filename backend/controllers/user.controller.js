@@ -20,7 +20,7 @@ export const register = async (req, res) => {
       });
     }
 
-    const hashedPassword = bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     await User.create({
       fullname,
@@ -115,25 +115,22 @@ export const logout = async (req, res) => {
       success: true,
     });
   } catch (error) {
-    console.log(error);
+    console.log(error); 
   }
 };
 
 export const updateProfile = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, bio, skills } = req.body;
-    if (!fullname || !email || !phoneNumber || !bio || !skills) {
-      return res.status(400).json({
-        message: "Something is missing",
-        success: false,
-      });
-    }
 
+    let skillsArray;
+    if (skills) {
+      skillsArray = skills.split(",");
+    }
     const file = req.file;
-    const skillsArray = skills.split(",");
     const userId = req.id; //Middleware auth
-    console.log(userId);
-    const user = await User.findOne({ userId });
+    // console.log(userId);
+    let user = await User.findById(userId);
     if (!user) {
       return res.status(400).json({
         message: "User not found",
@@ -142,11 +139,11 @@ export const updateProfile = async (req, res) => {
     }
 
     // updating data
-    user.fullname = fullname;
-    user.email = email;
-    user.phoneNumber;
-    user.profile.bio = bio;
-    user.profile.skills = skillsArray;
+    if (fullname) user.fullname = fullname;
+    if (email) user.email = email;
+    if (phoneNumber) user.phoneNumber = phoneNumber;
+    if (bio) user.profile.bio = bio;
+    if (skills) user.profile.skills = skillsArray;
 
     // resume
 
@@ -166,9 +163,6 @@ export const updateProfile = async (req, res) => {
       user,
       success: true,
     });
-
-
-
   } catch (error) {
     console.log(error);
   }
