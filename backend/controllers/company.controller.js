@@ -1,6 +1,4 @@
 import { Company } from "../models/company.model.js";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 
 export const registerCompany = async (req, res) => {
   try {
