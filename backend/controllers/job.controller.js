@@ -1,6 +1,4 @@
 import { Job } from "../models/job.model.js";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 
 export const postJob = async (req, res) => {
   try {
