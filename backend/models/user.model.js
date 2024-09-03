@@ -22,11 +22,11 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       enum: ["student", "recruiter"],
-      required: true, 
+      required: true,
     },
     profile: {
       bio: { type: String },
-      skills: { type: String },
+      skills: [{ type: String }],
       resume: { type: String },
       resumeOrignalName: { type: String },
       company: { type: mongoose.Schema.Types.ObjectId, ref: "Company" },
