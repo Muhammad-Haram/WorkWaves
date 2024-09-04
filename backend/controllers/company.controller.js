@@ -6,7 +6,7 @@ export const registerCompany = async (req, res) => {
     if (!companyName) {
       return res.status(400).json({
         message: "Company name is required",
-        success: true,
+        success: false,
       });
     }
 
@@ -14,7 +14,7 @@ export const registerCompany = async (req, res) => {
 
     if (company) {
       return res.status(400).json({
-        message: "Choose unique name for your company",
+        message: "You can't register same company.",
         success: false,
       });
     }

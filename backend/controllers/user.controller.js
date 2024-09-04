@@ -67,7 +67,7 @@ export const login = async (req, res) => {
 
     // check role is correct or in correct
 
-    if (role != user.role) {
+    if (role !== user.role) {
       return res.status(400).json({
         message: `Account does not exists with this current role.`,
         success: false,
@@ -122,12 +122,12 @@ export const logout = async (req, res) => {
 export const updateProfile = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, bio, skills } = req.body;
+    const file = req.file;
 
     let skillsArray;
     if (skills) {
       skillsArray = skills.split(",");
     }
-    const file = req.file;
     const userId = req.id; //Middleware auth
     // console.log(userId);
     let user = await User.findById(userId);

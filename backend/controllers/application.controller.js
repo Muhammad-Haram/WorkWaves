@@ -14,14 +14,14 @@ export const applyJob = async (req, res) => {
     }
 
     //check if the user already applied for this job
-    const existingApplied = await Application.findOne({
+    const existingApplication = await Application.findOne({
       job: jobId,
       applicant: userId,
     });
 
-    if (existingApplied) {
+    if (existingApplication) {
       return res.status(400).json({
-        message: "You have already applied for this job",
+        message: "You have already applied for this jobs",
         success: false,
       });
     }
@@ -39,7 +39,7 @@ export const applyJob = async (req, res) => {
 
     // create a new application
 
-    const newApplication = Application.create({
+    const newApplication = await Application.create({
       job: jobId,
       applicant: userId,
     });
