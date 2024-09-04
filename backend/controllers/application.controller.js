@@ -137,7 +137,7 @@ export const updateStatus = async (req, res) => {
       });
     }
 
-    application.status = status;
+    application.status = status.toLowerCase();
     await application.save();
 
     return res.status(200).json({
