@@ -1,8 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer base {
-  :root {
-    --radius: 0.5rem
-  }
+
+.navbar,
+.link-list,
+.user-name {
+  font-family: "Cabinet Grotesk", sans-serif;
+  /* font-family: 'Panchang', sans-serif; */
 }
