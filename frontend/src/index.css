@@ -8,3 +8,7 @@
   font-family: "Cabinet Grotesk", sans-serif;
   /* font-family: 'Panchang', sans-serif; */
 }
+
+.radio-color {
+  accent-color: rgb(0, 0, 0);
+}
