@@ -54,16 +54,12 @@ const Signup = () => {
       if (res.data.success) {
         navigate("/login");
         toast.success(res.data.message);
-        // console.log("res", res);
-        // console.log("res.data", res.data);
-        // console.log("res.data.success", res.data.success);
-        // console.log("res.data.message", res.data.message);
+        console.log(res);
+        console.log(res.data);
       }
     } catch (error) {
       console.log(error);
-      console.log(formData);
-      // toast.error(error.response.data.message);
-      console.log(error.response.data);
+      toast.error(error.response.data.message);
     }
   };
 

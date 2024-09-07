@@ -36,14 +36,10 @@ const Login = () => {
       if (res.data.success) {
         navigate("/");
         toast.success(res.data.message);
-        // console.log("res", res);
-        // console.log("res.data", res.data);
-        // console.log("res.data.success", res.data.success);
-        // console.log("res.data.message", res.data.message);
       }
     } catch (error) {
       console.log(error);
-      // toast.error(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
