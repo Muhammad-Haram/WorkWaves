@@ -26,7 +26,7 @@ const CategoryCarousel = () => {
       <Carousel className="w-full max-w-xl mx-auto my-20">
         <CarouselContent>
           {category.map((cate, index) => (
-            <CarouselItem className="text-center md:basis-1/3 lg-basis-1/3">
+            <CarouselItem key={index} className="text-center md:basis-1/3 lg-basis-1/3">
               <Button variant="outline" className="rounded-full">
                 {cate}
               </Button>
