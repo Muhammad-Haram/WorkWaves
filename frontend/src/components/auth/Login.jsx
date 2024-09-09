@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../shared/Navbar";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
@@ -9,7 +9,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import { USER_API_END_POINT } from "@/utils/constent";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoading } from "@/redux/authSlice";
+import { setLoading, setUser } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
 
 const Login = () => {
@@ -19,8 +19,8 @@ const Login = () => {
     role: "",
   });
 
+  const { loading, user } = useSelector((store) => store.auth);
   const navigate = useNavigate();
-  const { loading } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
   const changeEventHandler = (e) => {
@@ -40,6 +40,7 @@ const Login = () => {
       });
 
       if (res.data.success) {
+        dispatch(setUser(res.data.user));
         navigate("/");
         toast.success(res.data.message);
       }
@@ -50,6 +51,12 @@ const Login = () => {
       dispatch(setLoading(false));
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div>

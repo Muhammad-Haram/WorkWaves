@@ -3,10 +3,35 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { LogOut, User2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { USER_API_END_POINT } from "../../utils/constent";
+import { setUser } from "../../redux/authSlice";
+import { toast } from "sonner";
 
 const Navbar = () => {
-  const user = false;
+  // const user = false;
+  const { user } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logoutHandler = async () => {
+    try {
+      const res = await axios.get(`${USER_API_END_POINT}/logout`, {
+        withCredentials: true,
+      });
+      console.log(user)
+      if (res.data.success) {
+        dispatch(setUser(null));
+        navigate("/");
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  };
 
   return (
     <div className="bg-white">
@@ -19,9 +44,15 @@ const Navbar = () => {
 
         <div className="flex items-center gap-12">
           <ul className="flex font-medium items-center gap-5 link-list">
-            <li className="cursor-pointer"><Link to="/">Home</Link></li>
-            <li className="cursor-pointer"><Link to="/">Jobs</Link></li>
-            <li className="cursor-pointer"><Link to="/">Browse</Link></li>
+            <li className="cursor-pointer">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="cursor-pointer">
+              <Link to="/">Jobs</Link>
+            </li>
+            <li className="cursor-pointer">
+              <Link to="/">Browse</Link>
+            </li>
           </ul>
 
           {!user ? (
@@ -58,7 +89,7 @@ const Navbar = () => {
                   </Avatar>
 
                   <div>
-                    <h4 className="user-name font-bold">Muhammad Haram</h4>
+                    <h4 className="user-name font-bold">{user?.fullname}</h4>
                     <p className="text-sm">
                       Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                       Blanditiis asperiores culpa,
@@ -73,7 +104,9 @@ const Navbar = () => {
 
                 <div className="flex w-fit items-center gap-3 cursor-pointer">
                   <LogOut />
-                  <Button variant="link">Logout</Button>
+                  <Button onClick={logoutHandler} variant="link">
+                    Logout
+                  </Button>
                 </div>
               </PopoverContent>
             </Popover>
