@@ -1,8 +1,14 @@
 import React from 'react'
+import Navbar from './shared/Navbar'
+import Footer from './shared/Footer'
 
 const Browse = () => {
   return (
-    <div>Browse</div>
+    <>
+      <Navbar />
+      Browse
+      <Footer />
+    </>
   )
 }
 
