@@ -21,7 +21,7 @@ const Navbar = () => {
       const res = await axios.get(`${USER_API_END_POINT}/logout`, {
         withCredentials: true,
       });
-      console.log(user)
+      console.log(user);
       if (res.data.success) {
         dispatch(setUser(null));
         navigate("/");
@@ -48,10 +48,10 @@ const Navbar = () => {
               <Link to="/">Home</Link>
             </li>
             <li className="cursor-pointer">
-              <Link to="/">Jobs</Link>
+              <Link to="/jobs">Jobs</Link>
             </li>
             <li className="cursor-pointer">
-              <Link to="/">Browse</Link>
+              <Link to="/browse">Browse</Link>
             </li>
           </ul>
 

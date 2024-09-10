@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./shared/Navbar";
 import HeroSection from "./HeroSection";
 import LatestJobs from "./LatestJobs";
-import Footer from "./Footer";
+import Footer from "./shared/Footer";
 import CategoryCarousel from "./CategoryCarousel";
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
       <HeroSection />
       <CategoryCarousel />
       <LatestJobs />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

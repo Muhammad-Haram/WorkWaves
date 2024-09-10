@@ -11,6 +11,7 @@ import { USER_API_END_POINT } from "@/utils/constent";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
+import Footer from "../shared/Footer";
 
 const Login = () => {
   const [input, setInput] = useState({
@@ -136,6 +137,8 @@ const Login = () => {
           </span>
         </form>
       </div>
+
+      <Footer/>
     </div>
   );
 };

@@ -18,6 +18,7 @@ const LatestJobsCards = () => {
         </p>
       </div>
       <div className="flex items-center gap-2 mt-4">
+
         <Badge className={"text-blue-700 font-bold"} variant="ghost">
           12 Positions
         </Badge>
@@ -27,6 +28,7 @@ const LatestJobsCards = () => {
         <Badge className={"text-[#7209b7] font-bold"} variant="ghost">
           24LPA
         </Badge>
+
       </div>
     </div>
   );
