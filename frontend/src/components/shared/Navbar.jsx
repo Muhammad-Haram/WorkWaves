@@ -99,7 +99,7 @@ const Navbar = () => {
 
                 <div className="flex w-fit items-center gap-3 cursor-pointer">
                   <User2 />
-                  <Button variant="link">View Profile</Button>
+                  <Button variant="link"><Link to="/profile">View Profile</Link></Button>
                 </div>
 
                 <div className="flex w-fit items-center gap-3 cursor-pointer">
