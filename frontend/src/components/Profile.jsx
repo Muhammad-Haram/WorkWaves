@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import Navbar from './shared/Navbar'
 import Footer from './shared/Footer'
 import { Avatar, AvatarImage } from './ui/avatar'
@@ -6,10 +7,15 @@ import { Button } from './ui/button'
 import { Contact, Mail, Pen } from 'lucide-react'
 import { Badge } from './ui/badge'
 import { Label } from './ui/label'
+import AppliedJobTable from './AppliedJobTable'
 
-const isResume = true;
 const skills = ["Html", "Css", "JavaScript", "TypeScript", "Reactjs", "Nextjs", "Vuejs", "Nodejs", "Expressjs", "MongoDB"];
+const isResume = true;
+
 const Profile = () => {
+
+    const [open, setOpen] = useState(false);
+
     return (
         <div>
             <Navbar />
@@ -28,7 +34,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <Button className="text-right" variant="outline"><Pen /></Button>
+                    <Button className="text-right" variant="outline">Edit</Button>
 
                 </div>
 
@@ -59,12 +65,11 @@ const Profile = () => {
                     }
                 </div>
 
-                <div className='max-w-4xl mx-auto bg-white rounded-2xl'>
-                    <h1 className='font-bold text-lg my-5'>Applied Jobs</h1>
-                    {/* Applied Job Table   */}
-                    {/* <AppliedJobTable /> */}
-                </div>
 
+            </div>
+            <div className='max-w-4xl mx-auto bg-white rounded-2xl'>
+                <h1 className='font-bold text-lg my-5'>Applied Jobs</h1>
+                <AppliedJobTable />
             </div>
             <Footer />
         </div>
