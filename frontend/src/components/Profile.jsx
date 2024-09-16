@@ -8,6 +8,7 @@ import { Contact, Mail, Pen } from 'lucide-react'
 import { Badge } from './ui/badge'
 import { Label } from './ui/label'
 import AppliedJobTable from './AppliedJobTable'
+import UpdateProfile from './UpdateProfile'
 
 const skills = ["Html", "Css", "JavaScript", "TypeScript", "Reactjs", "Nextjs", "Vuejs", "Nodejs", "Expressjs", "MongoDB"];
 const isResume = true;
@@ -34,8 +35,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <Button className="text-right" variant="outline">Edit</Button>
-
+                    <Button onClick={() => setOpen(true)} className="text-right" variant="outline">Edit</Button>
                 </div>
 
                 <div className='my-5'>
@@ -72,6 +72,7 @@ const Profile = () => {
                 <AppliedJobTable />
             </div>
             <Footer />
+            <UpdateProfile open={open} setOpen={setOpen} />
         </div>
     )
 }
