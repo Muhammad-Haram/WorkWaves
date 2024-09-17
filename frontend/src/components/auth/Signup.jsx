@@ -187,7 +187,7 @@ const Signup = () => {
         </form>
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 };

@@ -1,16 +1,16 @@
-"use client"
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Navbar from './shared/Navbar'
 import Footer from './shared/Footer'
 import { Avatar, AvatarImage } from './ui/avatar'
 import { Button } from './ui/button'
-import { Contact, Mail, Pen } from 'lucide-react'
+import { Contact, Mail } from 'lucide-react'
 import { Badge } from './ui/badge'
 import { Label } from './ui/label'
-import AppliedJobTable from './AppliedJobTable'
 import UpdateProfile from './UpdateProfile'
+import AppliedJobTable from './AppliedJobTable'
 
 const skills = ["Html", "Css", "JavaScript", "TypeScript", "Reactjs", "Nextjs", "Vuejs", "Nodejs", "Expressjs", "MongoDB"];
+
 const isResume = true;
 
 const Profile = () => {
