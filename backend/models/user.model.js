@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     password: {
-      type: Number,
+      type: String,
       required: true,
     },
     role: {
@@ -37,3 +37,4 @@ const userSchema = new mongoose.Schema(
 );
 
 export const User = mongoose.model("User", userSchema);
+
