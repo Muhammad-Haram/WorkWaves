@@ -28,7 +28,7 @@ const Filter = () => {
           filterData.map((data, index) => (
             <div>
               <h1 className='font-bold text-lg'>{data.filterType}</h1>
-              {
+              { 
                 data.array.map((item, idx) => {
                   return (
                     <div className='flex items-center space-x-2 my-2'>
